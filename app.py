@@ -71,6 +71,13 @@ st.title("📄 Important Question Generator")
 uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
 
 # Create temp directory if it doesn't exist
+import urllib.request
+
+# Download font if not already present
+font_path = "DejaVuSans.ttf"
+if not os.path.exists(font_path):
+    url = "https://github.com/dejavu-fonts/dejavu-fonts/raw/master/ttf/DejaVuSans.ttf"
+    urllib.request.urlretrieve(url, font_path)
 if uploaded_file:
     os.makedirs("temp", exist_ok=True)
 
